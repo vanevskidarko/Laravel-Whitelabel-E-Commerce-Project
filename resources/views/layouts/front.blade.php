@@ -43,16 +43,9 @@
 </head>
 <body>
 
-    <div class="container">
-        @include('layouts.inc.sidebar')
-        <div class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl">
-            @include('layouts.inc.adminnav')
-        </div>
         <div class="content">
             @yield('content')
         </div>
-        @include('layouts.inc.adminfooter')
-    </div>
 
 {{-- Scripts --}}
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
