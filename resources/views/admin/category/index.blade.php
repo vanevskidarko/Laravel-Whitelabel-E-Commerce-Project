@@ -16,18 +16,18 @@
             </thead>
             <tbody>
                 @foreach ($category as $item)
-                    
-                @endforeach
                 <tr>
                     <td>{{$item->id}}</td>
                     <td>{{$item->name}}</td>
                     <td>{{$item->description}}</td>
                     <td><img src="{{ asset('assets/uploads/category/'.$item->image)}}" class="w-25"></td>
                     <td>
-                        <a href="{{url('edit-product/'.$item->id) }}"  class="btn btn-primary">Edit</a>
-                        <a href="{{url('edit-product/'.$item->id) }}"  class="btn btn-primary">Edit</a>
-                    </td>
-                </tr>
+                        <a href="{{url('edit-prod/'.$item->id) }}"  class="btn btn-primary">Edit</a>
+                        <a href="{{url('delete-category/'.$item->id) }}"  class="btn btn-danger">Delete</a>
+                        </td>
+                </tr> 
+                @endforeach
+                
             </tbody>
         </table>
     </div>

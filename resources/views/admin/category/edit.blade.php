@@ -7,7 +7,7 @@
     </div>
     <div class="card-body">
         <h1>
-            <form action="{{url('update-category/'.$category->id)}}" method="PUT" enctype="multipart/form-data">
+            <form action="{{url('update-category/'.$category->id)}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="row">
@@ -21,15 +21,16 @@
                         <input type="text" class="form-control" value="{{$category->slug}}" name="slug">
                     </div>
                     <div class="col-md-12">
-                        <textarea name="description" rows="5" value="{{$category->description}}" class="form-control"></textarea>
+                        <label for="description">Description</label>
+                        <textarea name="description" rows="5"  class="form-control">{{$category->description}}</textarea>
                     </div>
                     <div class="col-md-6">
                         <label for="status">Status</label>
-                        <input type="checkbox"  name="status" value="{{$category->status == '1' ? 'checked' : ''}}">
+                        <input type="checkbox"  name="status" {{$category->status == "1" ? 'checked': ''}}>
                     </div>
                     <div class="col-md-6">
                         <label for="popular">Popular</label>
-                        <input type="checkbox"  name="popular" value="{{$category->popular == '1' ? 'checked' : ''}}">
+                        <input type="checkbox"  name="popular" {{$category->popular == '1' ? 'checked' : ''}}>
                     </div>
                     <div class="col-md-12">
                         <label for="meta_title">Meta Title</label>
@@ -44,7 +45,7 @@
                         <input type="text" class="form-control" name="meta_keywords" value="{{$category->meta_keywords}}">
                     </div>
                     @if ($category->image)
-                    <img src="{{asset('assets/uploads/category/'.$category->image)}}" alt="">
+                    <img class="w-25" src="{{asset('assets/uploads/category/'.$category->image)}}" alt="">
                     @endif
                     <div class="col-md-12">
                         <input type="file" class="form-control" name="image" id="">

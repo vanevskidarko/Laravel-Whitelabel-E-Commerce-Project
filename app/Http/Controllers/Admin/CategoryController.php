@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 Use App\Models\Category;
-
+use File;
 class CategoryController extends Controller
 {
     /**
@@ -74,6 +74,13 @@ class CategoryController extends Controller
         $category->meta_keywords = $request->input('meta_keywords');
         $category->update();
         return redirect('dashboard')->with('status','Category updated successfully');
+    }
+
+
+    public function destroy($id){
+        $category = Category::find($id);
+        $category->delete();
+        return back();
     }
 
 }

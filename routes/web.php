@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,6 +33,7 @@ Route::group(['middleware' => ['auth','isAdmin']], function () {
     Route::get('categories','Admin\CategoryController@index');
     Route::get('add-category','Admin\CategoryController@add');
     Route::post('insert-category','Admin\CategoryController@insert');
-    Route::get('edit-post/{id}','Admin\FrontendController@edit');
+    Route::get('edit-prod/{id}','Admin\CategoryController@edit');
     Route::put('update-category/{id}','Admin\CategoryController@update');
+    Route::get('delete-category/{id}', 'Admin\CategoryController@destroy');
  });
