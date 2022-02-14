@@ -26,4 +26,14 @@ class FrontendController extends Controller
             return redirect('/')->with('status','That type of category does not seem to have a slug');
         }
     }
+
+    public function productView($slug,$prod_name){
+        if(Category::where('slug',$slug)->exists()){
+                $products = Product::where('name',$prod_name)->first();
+                return view('frontend.products.view',compact('products'));
+                return redirect('/')->with('status','Not found');
+        }else{
+            return redirect('/')->with('status','No category');
+        }
+    }
 }

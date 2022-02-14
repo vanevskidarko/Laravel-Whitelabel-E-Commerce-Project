@@ -49,5 +49,6 @@ Route::group(['middleware' => ['auth','isAdmin']], function () {
     Route::get('delete-product/{id}', 'Admin\ProductController@destroy');
 
     Route::get('view-category/{slug}','Frontend\FrontendController@viewCategory');
+    Route::get('category/{slug}/{prod_name}','Frontend\FrontendController@productView');
 
  });
