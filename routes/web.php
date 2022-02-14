@@ -31,6 +31,10 @@ Route::group(['middleware' => ['auth','isAdmin']], function () {
     });
  });
 
+ Route::middleware(['auth'])->group(function(){
+    Route::post('/add-to-cart','Frontend\CartController@addProduct');
+ });
+
 
  Route::middleware(['auth','isAdmin'])->group(function(){
     Route::get('/dashboard','Admin\FrontendController@index');
