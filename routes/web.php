@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','Admin\FrontendController@index');
 
 Auth::routes();
 
@@ -43,6 +41,7 @@ Route::group(['middleware' => ['auth','isAdmin']], function () {
     Route::get('edit-product/{id}','Admin\ProductController@edit');
     Route::put('update-product/{id}','Admin\ProductController@update');
     Route::get('delete-product/{id}', 'Admin\ProductController@destroy');
+
 
 
  });

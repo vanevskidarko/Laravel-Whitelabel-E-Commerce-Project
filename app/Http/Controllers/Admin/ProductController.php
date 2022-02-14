@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 
+use File;
+
 
 class ProductController extends Controller
 {
@@ -107,7 +109,7 @@ class ProductController extends Controller
             $file = $request->file('image');
             $ext = $file->getClientOriginalExtension();
             $filename = time().'.'.$ext;
-            $file->move('assets/uploads/category',$filename);
+            $file->move('assets/uploads/products',$filename);
             $products->image = $filename;
             }
             

@@ -12,7 +12,7 @@
                 @method('PUT')
                 <div class="row">
                     <div class="col-md-12 mb-3">
-                        <select name="{{}}"  id="" class="form-select">
+                        <select   id="" class="form-select">
                             <option value="">{{$products->category->name}}</option>
                            
                         </select>

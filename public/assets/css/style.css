@@ -1,0 +1,8 @@
+.hero{
+    background: url('public/assets/images/yogesh-phuyal-mjwGKmwkDDA-unsplash.jpg') no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 1000px;
+}
