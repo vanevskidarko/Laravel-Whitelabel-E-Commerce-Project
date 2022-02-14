@@ -11,13 +11,16 @@
                 <div class="row">
                     @foreach ($category as $item)
                     <div class="col-md mb-2">
-                        <div class="card">
-                            <img src="{{asset('assets/uploads/category/'.$item->image)}}" width="400px" alt="">
-                            <div class="card-body">
-                                <h5>{{$item->name}}</h5>
-                                <p>{{$item->small_description}}</p>
+                        <a href="{{url('view-category/'.$item->slug)}}">
+                            <div class="card">
+                                <img src="{{asset('assets/uploads/category/'.$item->image)}}" width="400px" alt="">
+                                <div class="card-body">
+                                    <h5>{{$item->name}}</h5>
+                                    <p>{{$item->small_description}}</p>
+                                </div>
                             </div>
-                        </div>
+                        </a>
+                        
                     </div>
                         
                     @endforeach
