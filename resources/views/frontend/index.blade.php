@@ -8,6 +8,9 @@
 <div class="py-5">
     <div class="container">
         <div class="row">
+            <h2>
+                Trending products
+            </h2>
             <div class="owl-carousel owl-theme">
                 @foreach ($featured_products as $product )
                 <div class="item">
@@ -16,6 +19,29 @@
                         <div class="card-body">
                           <h4 class="card-text">{{$product->name}}</h4>
                           <span>{{$product->selling_price}}</span>
+                        </div>
+                      </div>
+                </div>                   
+                @endforeach
+            </div>
+            
+
+        </div>
+    </div>
+</div>
+
+<div class="py-5">
+    <div class="container">
+        <div class="row">
+            <h2>Trending Categories</h2>
+            <div class="owl-carousel owl-theme">
+                @foreach ($trending_categories as $category )
+                <div class="item">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="{{asset('assets/uploads/category/'.$category->image)}}" alt="Card image cap">
+                        <div class="card-body">
+                          <h4 class="card-text">{{$category->name}}</h4>
+                          <span>{{$category->description}}</span>
                         </div>
                       </div>
                 </div>                   
@@ -41,7 +67,7 @@ $('.owl-carousel').owlCarousel({
             items:3
         },
         1000:{
-            items:3
+            items:3 
         }
     }
 })

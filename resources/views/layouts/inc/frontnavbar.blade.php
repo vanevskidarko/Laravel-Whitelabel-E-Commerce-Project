@@ -12,8 +12,21 @@
           <a class="nav-link" href="#">Features</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
+          <a class="nav-link" href="{{url('category')}}">Category</a>
         </li>
+        @guest
+          @if (Route::has('login'))
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('login')}}">{{__('Login')}}</a>
+          </li>
+            
+          @endif
+          @if (Route::has('regiser'))
+            <li class="nav-item">
+              <a class="nav-link" href="{{route('register')}}">{{__('Login')}}</a>
+            </li>
+          @endif
+        @endguest
       </ul>
     </div>
   </nav>

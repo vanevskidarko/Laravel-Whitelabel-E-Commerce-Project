@@ -18,6 +18,11 @@ Route::get('/','Admin\FrontendController@index');
 
 Auth::routes();
 
+
+
+Route::get('/category','Frontend\FrontendController@category');
+
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => ['auth','isAdmin']], function () {
@@ -25,6 +30,7 @@ Route::group(['middleware' => ['auth','isAdmin']], function () {
        return view('admin.dashboard');
     });
  });
+
 
  Route::middleware(['auth','isAdmin'])->group(function(){
     Route::get('/dashboard','Admin\FrontendController@index');
@@ -41,7 +47,6 @@ Route::group(['middleware' => ['auth','isAdmin']], function () {
     Route::get('edit-product/{id}','Admin\ProductController@edit');
     Route::put('update-product/{id}','Admin\ProductController@update');
     Route::get('delete-product/{id}', 'Admin\ProductController@destroy');
-
 
 
  });
