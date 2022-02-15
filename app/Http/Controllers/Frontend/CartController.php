@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
@@ -27,12 +27,30 @@ class CartController extends Controller
                     $cartItem->user_id = Auth::id();
                     $cartItem->product_qty = $product_qty;
                     $cartItem->save();
-                    return response()->json(['status'=> 'Added to cart']);
+                    return response()->json(['status'=> $product_check->name.'Added to cart']);
                 }
                 }
                 
         }else{
             return response()->json(['status' => 'Login to continue']);
+        }
+    }
+
+    public function viewCart(){
+        $cartItems = Cart::where('user_id', Auth::id())->get();
+        return view('frontend.cart', compact('cartItems'));
+    }
+
+    public function deleteCartItems(Request $req){
+        if(Auth::check()){
+            $product_id = $req->input('product_id');
+            if(Cart::where('product_id',$product_id)->where('user_id',Auth::id())->exists()){
+                $cartItem = Cart::where('product_id',$product_id)->where('user_id',Auth::id())->first();
+                $cartItem->delete();
+                return response()->json(['status'=>"Product Deleted"]);
+            }
+        } else{
+            return response()->json(['status'=>'Login to continue']);
         }
     }
 }

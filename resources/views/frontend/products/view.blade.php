@@ -5,6 +5,22 @@
 @section('content')
 
 <div class="container">
+
+    <div class="py-3 mb-4 shadow-sm bg-warning border-top">
+        <div class="container">
+            <h6 class="mb-0">
+                <a href="{{url('category')}}">
+                    Collections
+                </a>
+                <a href="{{url('category/'.$products->category->name)}}">
+                    {{$products->category->name}}
+                </a>
+                <a href="{{url('category/'.$products->category->name.'/'.$products->name)}}">
+                    {{$products->name}}
+                </a>
+            </h6>
+        </div>
+    </div>
     <div class="row">
 
         <div class="col-12 col-sm-8 col-md-6 col-lg-4 product_data">
@@ -69,7 +85,7 @@
                     'product_qty'   :product_quantity
                 },
                 success: (response)=>{
-                   alert(response.status)
+                   swal(response.status)
                 }
             })
         })
@@ -77,7 +93,7 @@
         $('.increment-btn').click(function(e){
             e.preventDefault();
 
-            var inc_value = $('.qty').val();
+            var inc_value = $(this).closest('.product_data').find('.qty').val();
             var value = parseInt(inc_value,10);
             value = isNaN(value) ? 0 : value;
             if(value < 10){
@@ -89,7 +105,7 @@
         $('.decrement-btn').click(function(e){
             e.preventDefault();
 
-            var dec_value = $('.qty').val();
+            var dec_value = $(this).closest('.product_data').find('.qty').val();
             var value = parseInt(dec_value,10);
             value = isNaN(value) ? 0 : value;
             if(value > 1){
