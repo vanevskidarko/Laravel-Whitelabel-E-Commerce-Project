@@ -58,7 +58,7 @@
 
             <div class="card-footer">
                 <h6>Total Price: ${{$total}}</h6>
-                <button class="btn btn-success">Proceed To Checkout</button>
+                <a href="{{url('checkout')}}" class="btn btn-success">Proceed To Checkout</a>
             </div>
         </div>
     </div>
