@@ -17,6 +17,9 @@
         </h6>
     </div>
 </div>
+@php
+    $total = 0;
+@endphp
 
 <div class="container">
     <div class="card shadow-lg p-3 mb-5 bg-white rounded">
@@ -29,25 +32,38 @@
                 <div class="col-md-5">
                     <h6>{{$item->products->name}}</h6>
                 </div>
+
                 <div class="col-md-3">
                     <input type="hidden" name="product_id" class="product_id" value="{{$item->product_id}}">
                     <label for="quantity">
-                        {{$item->products->id}}
+                        Quantity
                     </label>
                     <div class="input-group text-center mb-3">
-                        <button class="input-group-text decrement-btn">-</button>
+                        <button class="input-group-text changeQuantity decrement-btn">-</button>
                         <input type="text" name="quantity" class="form-control text-center qty " value="{{$item->product_qty}}">
-                        <button class="input-group-text increment-btn">+</button>
+                        <button class="input-group-text changeQuantity increment-btn">+</button>
+                    </div>
+                    <div class="col-md-3 p-2">
+                        <h6>${{$item->products->selling_price}}</h6>
                     </div>
                 </div>
                 <div class="col-md-2">
                     <button class="btn btn-danger delete-cart-item"> <i class="fa fa-trash"></i>Remove</button>
                 </div>
             </div>
+            @php
+            $total += $item->products->selling_price * $item->product_qty;
+            @endphp
             @endforeach
+
+            <div class="card-footer">
+                <h6>Total Price: ${{$total}}</h6>
+                <button class="btn btn-success">Proceed To Checkout</button>
+            </div>
         </div>
     </div>
 </div>
+
 
 @section('scripts')
 <script>
@@ -81,6 +97,30 @@ $.ajaxSetup({
                 $(this).closest('.product_data').find('.qty').val(value)
             }
         }),
+
+        $.ajaxSetup({
+        headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+        $('.changeQuantity').click(function(e){
+            e.preventDefault();
+
+            var product_id = $(this).closest('.product_data').find('.product_id').val();
+            var qty = $(this).closest('.product_data').find('.qty').val();
+            $.ajax({
+                method: "POST",
+                url: 'update-cart',
+                data: {
+                    'product_id': product_id,
+                    'qty': qty,
+                },
+                success: function(response){
+                    window.location.reload()
+                }
+            })
+        })
 
         $('.delete-cart-item').click(function(e){
             e.preventDefault();

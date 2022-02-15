@@ -33,6 +33,7 @@ Route::group(['middleware' => ['auth','isAdmin']], function () {
 
  Route::post('/add-to-cart','Frontend\CartController@addProduct');
  Route::post('delete-cart-items','Frontend\CartController@deleteCartItems');
+ Route::post('update-cart','Frontend\CartController@updateCart');
 Route::get('cart','Frontend\CartController@viewCart');
 
  Route::middleware(['auth'])->group(function(){
