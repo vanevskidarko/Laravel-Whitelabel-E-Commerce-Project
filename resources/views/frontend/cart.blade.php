@@ -7,7 +7,7 @@
 
 <div class="py-3 mb-4 shadow-lg bg-warning border-top">
     <div class="container">
-        <h6 class="mb-0">
+        <h6 class="">
             <a href="{{url('/')}}">
                 Home
             </a>/
@@ -16,6 +16,7 @@
             </a>
         </h6>
     </div>
+
 </div>
 @php
     $total = 0;

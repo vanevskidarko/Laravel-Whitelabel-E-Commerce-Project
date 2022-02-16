@@ -1,12 +1,9 @@
 <div class="hero pt-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <h2>Welcome to our site</h2>
-            </div>
-            <div class="col-md-4">
-                Get Started
-            </div>
+    <header class="bg-primary bg-gradient text-white">
+        <div class="container px-4 text-center">
+            <h1 class="fw-bolder">Welcome to Scrolling Nav</h1>
+            <p class="lead">A functional Bootstrap 5 boilerplate for one page scrolling websites</p>
+            <a class="btn btn-lg btn-light" href="#about">Start scrolling!</a>
         </div>
-    </div>
+    </header>
 </div>

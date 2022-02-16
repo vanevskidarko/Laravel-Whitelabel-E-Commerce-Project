@@ -6,6 +6,8 @@ Checkout
 
 @section('content')
 <div class="container mt-5 pt-5">
+    <form action="{{url('place-order')}}" method="POST">
+        @csrf
     <div class="row">
         <div class="col-md-7">
             <div class="card">
@@ -52,31 +54,34 @@ Checkout
                 </div>
             </div>
         </div>
-        <div class="col-md-5">
-            <div class="card">
-                <div class="card-body">
-                    Order Details
-                    <hr>
-                    <table class="table table-striped">
-                        <thead>
-                            <th>Name</th>
-                            <th>Quantity</th>
-                            <th>Price</th>
-                        </thead>
-                        <tbody>
-                            @foreach ($cartItems as $item)
-                                <tr>
-                                    <td>{{$item->products->name}}</td>
-                                    <td>{{$item->product_qty}}</td>
-                                    <td>${{$item->products->selling_price}}</td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                    <button class="btn btn-primary float-right">Place Order</button>
+
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-body">
+                        Order Details
+                        <hr>
+                        <table class="table table-striped">
+                            <thead>
+                                <th>Name</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                            </thead>
+                            <tbody>
+                                @foreach ($cartItems as $item)
+                                    <tr>
+                                        <td>{{$item->products->name}}</td>
+                                        <td>{{$item->product_qty}}</td>
+                                        <td>${{$item->products->selling_price}}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        <button type="submit" class="btn btn-primary float-right">Place Order</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+        </form>
+
 </div>
 @endsection

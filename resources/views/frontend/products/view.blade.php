@@ -34,6 +34,12 @@
                     
                     <p class="card-text">
                         {{$products->small_description}} </p>
+                        @if ($products->qty>0)
+                            <label for="" class="badge bg-success">In Stock</label>
+                            @else
+                            <label for="" class="badge bg-warning">Out of Stock</label>
+
+                        @endif
                    
                     <br>
                     <input type="hidden" name="product_id" class="product_id" value="{{$products->id}}">
@@ -47,7 +53,9 @@
                         <div class="price text-success">
                             <h5 class="mt-4">${{$products->selling_price}}</h5>
                         </div>
+                        @if ($products->qty > 0)
                         <a href="#" class="btn btn-primary ml-1 p-1 mt-3 addToCart"> Add to Cart <i class="fa fa-shopping-cart"></i></a>
+                        @endif
                         <a href="#" class="btn btn-success mx-1 p-1 mt-3"> Add to Wishlist <i class="fa fa-heart"></i></a>
                     </div>
                 </div>
