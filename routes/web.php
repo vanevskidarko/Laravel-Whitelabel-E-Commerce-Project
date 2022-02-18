@@ -70,4 +70,6 @@ Route::get('view-order/{id}','Frontend\UserController@view');
     Route::put('update-order/{id}','Admin\OrderController@update');
     Route::get('order-history/','Admin\OrderController@orderHistory');
 
+    Route::get('users','Admin\DashboardController@index');
+
  });
