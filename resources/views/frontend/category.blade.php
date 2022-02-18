@@ -13,7 +13,7 @@
                     <div class="col-md mb-2">
                         <a href="{{url('view-category/'.$item->slug)}}">
                             <div class="card">
-                                <img src="{{asset('assets/uploads/category/'.$item->image)}}" width="400px" alt="">
+                                <img src="{{asset('assets/uploads/category/'.$item->image)}}" style="width: 100%;height: 15vw; object-fit: cover;" alt="">
                                 <div class="card-body">
                                     <h5>{{$item->name}}</h5>
                                     <p>{{$item->small_description}}</p>

@@ -1,3 +1,6 @@
+@php
+use Illuminate\Support\Facades\Auth;
+@endphp
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container px-4">
     <a class="navbar-brand" href="{{'/'}}">Ecommerce</a>
@@ -18,6 +21,9 @@
         <li class="nav-item">
           <a class="nav-link" href="{{url('cart')}}">Cart</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{url('my-orders')}}">My Orders</a>
+        </li>
         @guest
           @if (Route::has('login'))
           <li class="nav-item">
@@ -25,11 +31,12 @@
           </li>
             
           @endif
-          @if (Route::has('regiser'))
+          @if (Route::has('register'))
             <li class="nav-item">
-              <a class="nav-link" href="{{route('register')}}">{{__('Login')}}</a>
+              <a class="nav-link" href="{{route('register')}}">{{__('Register')}}</a>
             </li>
           @endif
+          @else
         @endguest
       </ul>
     </div>

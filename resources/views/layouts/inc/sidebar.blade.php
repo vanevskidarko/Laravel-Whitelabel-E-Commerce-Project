@@ -41,7 +41,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white {{Request::is('add-category') ? 'active' : ""}}" " href="add-category">
+          <a class="nav-link text-white {{Request::is('add-category') ? 'active' : ""}}" " href="{{url('add-category')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
@@ -50,22 +50,23 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link text-white " href="../pages/billing.html">
+          <a class="nav-link text-white {{Request::is('orders') ? 'active' : ""}}" " href="{{url('orders')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">receipt_long</i>
             </div>
-            <span class="nav-link-text ms-1">Billing</span>
+            <span class="nav-link-text ms-1">Orders</span>
           </a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link text-white " href="../pages/profile.html">
+          <a class="nav-link text-white {{Request::is('users') ? 'active' : ""}}" " href="{{url('users')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">person</i>
             </div>
-            <span class="nav-link-text ms-1">Profile</span>
+            <span class="nav-link-text ms-1">Users</span>
           </a>
         </li>
+
         @if (Route::has('login'))
         <li class="nav-link text-white">
             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" >{{ __('Logout') }}

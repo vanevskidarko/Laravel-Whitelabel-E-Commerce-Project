@@ -30,6 +30,12 @@ class CheckoutController extends Controller
         $order->city = $req->input('city');
         $order->country = $req->input('country');
         $order->pincode = $req->input('pin');
+        $total = 0;
+        $cartItems_total = Cart::where('user_id',Auth::id())->get();
+        foreach($cartItems_total as $prod){
+            $total += $prod->products->selling_price * $prod->product_qty;
+        }
+        $order->total_price = $total;
         $order->tracking_number = 'NO.'.rand(1919,939012);
         $order->save();
 
@@ -44,8 +50,7 @@ class CheckoutController extends Controller
                 'price'=>$item->products->selling_price
             ]);
             $product = Product::where('id',$item->id)->first();
-            $product->qty = $product->qty - $item->product_qty;
-            $product->update();
+
         }
 
         if(Auth::user()->address1 == NULL){

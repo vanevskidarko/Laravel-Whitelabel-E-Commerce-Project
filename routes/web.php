@@ -38,6 +38,8 @@ Route::get('cart','Frontend\CartController@viewCart');
 Route::post('place-order','Frontend\CheckoutController@placeOrder');
 
 Route::get('checkout','Frontend\CheckoutController@index');
+Route::get('my-orders','Frontend\UserController@index');
+Route::get('view-order/{id}','Frontend\UserController@view');
 
  Route::middleware(['auth'])->group(function(){
  });
@@ -61,5 +63,11 @@ Route::get('checkout','Frontend\CheckoutController@index');
 
     Route::get('view-category/{slug}','Frontend\FrontendController@viewCategory');
     Route::get('category/{slug}/{prod_name}','Frontend\FrontendController@productView');
+
+    Route::get('users','Admin\FrontendController@users');
+    Route::get('orders','Admin\OrderController@index');
+    Route::get('admin/view-order/{id}','Admin\OrderController@view');
+    Route::put('update-order/{id}','Admin\OrderController@update');
+    Route::get('order-history/','Admin\OrderController@orderHistory');
 
  });

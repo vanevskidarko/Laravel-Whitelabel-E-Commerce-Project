@@ -21,7 +21,6 @@
 @php
     $total = 0;
 @endphp
-
 <div class="container">
     <div class="card shadow-lg p-3 mb-5 bg-white rounded">
         <div class="card-body">
@@ -64,6 +63,7 @@
         </div>
     </div>
 </div>
+
 
 
 @section('scripts')

@@ -10,20 +10,19 @@
         <div class="row">
             <h2>
                 Trending products
+
             </h2>
             <div class="owl-carousel owl-theme">
                 @foreach ($featured_products as $product )
-                <a href="{{url('view-product/'.$product->name)}}">
                     <div class="item">
                         <div class="card" style="width: 18rem;">
-                            <img class="card-img-top" src="{{asset('assets/uploads/products/'.$product->image)}}" alt="Card image cap">
+                            <img class="card-img-top" style="width: 100%;height: 15vw; object-fit: cover;" src="{{asset('assets/uploads/products/'.$product->image)}}" alt="Card image cap">
                             <div class="card-body">
                               <h4 class="card-text">{{$product->name}}</h4>
                               <span>{{$product->selling_price}}</span>
                             </div>
                           </div>
                     </div>      
-                </a>
                 @endforeach
             </div>
             
@@ -40,7 +39,7 @@
                 @foreach ($trending_categories as $category )
                 <div class="item">
                     <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="{{asset('assets/uploads/category/'.$category->image)}}" alt="Card image cap">
+                        <img class="card-img-top" style="width: 100%;height: 15vw; object-fit: cover;" src="{{asset('assets/uploads/category/'.$category->image)}}" alt="Card image cap">
                         <div class="card-body">
                           <h4 class="card-text">{{$category->name}}</h4>
                           <span>{{$category->description}}</span>
