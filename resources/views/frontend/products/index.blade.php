@@ -11,10 +11,10 @@
             </h2>
            
                 @foreach ($products as $product )
-                    <div class="col-md-3 mb-3">
+                    <div class="col-md-3 mb-3 p-3">
                         <div class="card" style="width: 18rem;">
                             <a href="{{url('category/'.$category->slug.'/'.$product->name)}}">
-                            <img class="card-img-top" src="{{asset('assets/uploads/products/'.$product->image)}}" alt="Card image cap">
+                            <img class="card-img-top" style="width: 100%;height: 15vw; object-fit: cover;" src="{{asset('assets/uploads/products/'.$product->image)}}" alt="Card image cap">
                             <div class="card-body">
                               <h4 class="card-text">{{$product->name}}</h4>
                               <span>{{$product->selling_price}}</span>

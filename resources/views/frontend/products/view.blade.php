@@ -56,7 +56,7 @@
                         @if ($products->qty > 0)
                         <a href="#" class="btn btn-primary ml-1 p-1 mt-3 addToCart"> Add to Cart <i class="fa fa-shopping-cart"></i></a>
                         @endif
-                        <a href="#" class="btn btn-success mx-1 p-1 mt-3"> Add to Wishlist <i class="fa fa-heart"></i></a>
+                        <a href="#" class="btn btn-success addToWishlist mx-1 p-1 mt-3"> Add to Wishlist <i class="fa fa-heart"></i></a>
                     </div>
                 </div>
             </div>
@@ -120,6 +120,23 @@
                 value--;
                 $('.qty').val(value);
             }
+        }),
+
+        $('.addToWishlist').click(function(e){
+            e.preventDefault()
+
+            var product_id = $(this).closest('.product_data').find('.product_id').val();
+
+            $.ajax({
+                method: 'POST',
+                url:    '/add-to-wishlist',
+                data:   {
+                    'product_id'    : product_id,
+                },
+                success: (response)=>{
+                   swal(response.status)
+                }
+            })
         })
     })
 </script>

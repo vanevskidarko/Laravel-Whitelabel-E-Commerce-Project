@@ -28,5 +28,7 @@
 </script>
 @endif
 @yield('scripts')
+
+@include('layouts.inc.footer')
 </body>
 </html>

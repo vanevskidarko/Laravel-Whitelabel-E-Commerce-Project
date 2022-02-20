@@ -68,7 +68,9 @@ class CheckoutController extends Controller
 
         $cartItems = Cart::where('user_id',Auth::id())->get();
         Cart::destroy($cartItems);
+        if($req->input('payment_mode')=='Paid by paypal'){
+            return response()->json(['status'=>'Order placed successfully']);
+        }
         return redirect('/')->with('status','Order placed successfully');
-        
     }
 }

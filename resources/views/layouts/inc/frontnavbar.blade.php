@@ -21,6 +21,10 @@ use Illuminate\Support\Facades\Auth;
         <li class="nav-item">
           <a class="nav-link" href="{{url('cart')}}">Cart</a>
         </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{{url('wishlist')}}">Wishlist</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="{{url('my-orders')}}">My Orders</a>
         </li>

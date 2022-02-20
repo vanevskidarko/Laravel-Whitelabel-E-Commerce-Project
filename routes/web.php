@@ -40,8 +40,12 @@ Route::post('place-order','Frontend\CheckoutController@placeOrder');
 Route::get('checkout','Frontend\CheckoutController@index');
 Route::get('my-orders','Frontend\UserController@index');
 Route::get('view-order/{id}','Frontend\UserController@view');
+Route::get('wishlist','Frontend\WishlistController@index');
+Route::post('/add-to-wishlist','Frontend\WishlistController@add');
+Route::post('delete-wishlist-items','Frontend\WishlistController@delete');
 
  Route::middleware(['auth'])->group(function(){
+    Route::post('/place-order','Frontend\CheckoutController@placeorder');
  });
 
 

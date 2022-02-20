@@ -73,10 +73,15 @@ Checkout
                                         <td>{{$item->product_qty}}</td>
                                         <td>${{$item->products->selling_price}}</td>
                                     </tr>
+                                    @php
+                                        $total = 0;
+                                        $total+=$item->products->selling_price*$item->product_qty;
+                                    @endphp
                                 @endforeach
                             </tbody>
                         </table>
-                        <button type="submit" class="btn btn-primary float-right">Place Order</button>
+                        <h4 class="total my-1 text-center">Total:{{$total}}</h3>
+                        <div id="paypal-button-container"></div>
                     </div>
                 </div>
             </div>
@@ -84,4 +89,61 @@ Checkout
         </form>
 
 </div>
+
+<script>
+    <script src="https://www.paypal.com/sdk/js?client-id=AUx3CYeK5Vwh8qbOGeQGqNBL35ykZybRZn-h_jAQrarERarxmN2se-JZvBI50T2RzKkWB36M61kAwt_v"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
+    <script>
+
+      paypal.Buttons({
+
+        // Sets up the transaction when a payment button is clicked
+        createOrder: function(data, actions) {
+          return actions.order.create({
+            purchase_units: [{
+              amount: {
+                value: '{{$total}}' 
+              }
+            }]
+          });
+        },
+
+        // Finalize the transaction after payer approval
+        onApprove: function(data, actions) {
+          return actions.order.capture().then(function(orderData) {
+            var firstname = $('.firstname').val()
+            var lastname = $('.lastname').val()
+            var email = $('.email').val()
+            var phone = $('.phone').val()
+            var address1 = $('.address1').val()
+            var address2 = $('.address2').val()
+            var city = $('.city').val()
+            var country = $('.country').val()
+            var pincode = $('.pin').val()
+            $.ajax({
+               method: "POST",
+               url:     '/place-order',
+               data:{
+                   'firstname': firstname,
+                   'lastname':  lastname,
+                   'email':     email,
+                   'phone':     phone,
+                   'address1':  address1,
+                   'address2':  address2,
+                   'city':  city,
+                   'country':  country,
+                   'pincode':  pincode,
+                   'payment_mode': 'Paid by paypal',
+                   'payment_id': details_id
+               },
+               success:function(response){
+                   swal(response.status)
+                   window.location.href = '/my-orders'
+               }
+           })
+          });
+        }
+      }).render('#paypal-button-container');
+</script>
 @endsection
+
