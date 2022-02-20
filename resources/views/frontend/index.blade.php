@@ -8,7 +8,7 @@
 <div class="py-5">
     <div class="container">
         <div class="row">
-            <h2>
+            <h2 class="text-center">
                 Trending products
 
             </h2>
