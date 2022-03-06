@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use PHPUnit\TextUI\XmlConfiguration\CodeCoverage\Report\Php;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,6 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/','Admin\FrontendController@index');
 
 Auth::routes();
-
 
 
 

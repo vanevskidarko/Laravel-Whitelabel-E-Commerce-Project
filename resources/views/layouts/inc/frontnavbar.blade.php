@@ -1,8 +1,9 @@
 @php
 use Illuminate\Support\Facades\Auth;
 @endphp
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container px-4">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="    background-color: #f5f5f5d4!important;
+">
+  <div class="container px-5 flex-row-reverse">
     <a class="navbar-brand" href="{{'/'}}">Ecommerce</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>

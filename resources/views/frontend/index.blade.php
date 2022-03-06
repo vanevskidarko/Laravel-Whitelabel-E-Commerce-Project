@@ -8,7 +8,8 @@
 <div class="py-5">
     <div class="container">
         <div class="row">
-            <h2 class="text-center">
+            <h2 class="text-center" style="    margin-left: 12em;
+            padding-bottom: 0.9em;">
                 Trending products
 
             </h2>
@@ -37,7 +38,8 @@
 <div class="py-5">
     <div class="container">
         <div class="row">
-            <h2>Trending Categories</h2>
+            <h2 class="text-center" style="    margin-left: 12em;
+            padding-bottom: 0.9em;">Trending Categories</h2>
             <div class="owl-carousel owl-theme">
                 @foreach ($trending_categories as $category )
                 <div class="item">
