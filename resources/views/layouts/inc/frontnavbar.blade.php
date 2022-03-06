@@ -12,22 +12,26 @@ use Illuminate\Support\Facades\Auth;
         <li class="nav-item active">
           <a class="nav-link" href="{{url('/')}}">Home <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
-        </li>
+        @if (Auth::check())
         <li class="nav-item">
           <a class="nav-link" href="{{url('category')}}">Category</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{{url('cart')}}">Cart</a>
         </li>
-
+        @if(Auth::check() && Auth::user()->role  == "1")
+        <li class="nav-item">
+          <a class="nav-link" href="{{url('categories')}}">Dashboard</a>
+        </li>
+        @endif
         <li class="nav-item">
           <a class="nav-link" href="{{url('wishlist')}}">Wishlist</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{{url('my-orders')}}">My Orders</a>
         </li>
+        @endif
+        
         @guest
           @if (Route::has('login'))
           <li class="nav-item">

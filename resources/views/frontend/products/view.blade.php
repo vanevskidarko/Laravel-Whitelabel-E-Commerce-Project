@@ -12,7 +12,7 @@
                 <a href="{{url('category')}}">
                     Collections
                 </a>
-                <a href="{{url('category/'.$products->category->name)}}">
+                <a href="{{url('view-category/'.$products->category->name)}}">
                     {{$products->category->name}}
                 </a>
                 <a href="{{url('category/'.$products->category->name.'/'.$products->name)}}">

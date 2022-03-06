@@ -20,7 +20,6 @@ Auth::routes();
 
 
 
-Route::get('/category','Frontend\FrontendController@category');
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -46,6 +45,9 @@ Route::post('delete-wishlist-items','Frontend\WishlistController@delete');
 
  Route::middleware(['auth'])->group(function(){
     Route::post('/place-order','Frontend\CheckoutController@placeorder');
+    Route::get('view-category/{slug}','Frontend\FrontendController@viewCategory');
+    Route::get('category/{slug}/{prod_name}','Frontend\FrontendController@productView');
+    Route::get('/category','Frontend\FrontendController@category');
  });
 
 
@@ -65,8 +67,7 @@ Route::post('delete-wishlist-items','Frontend\WishlistController@delete');
     Route::put('update-product/{id}','Admin\ProductController@update');
     Route::get('delete-product/{id}', 'Admin\ProductController@destroy');
 
-    Route::get('view-category/{slug}','Frontend\FrontendController@viewCategory');
-    Route::get('category/{slug}/{prod_name}','Frontend\FrontendController@productView');
+
 
     Route::get('users','Admin\FrontendController@users');
     Route::get('orders','Admin\OrderController@index');

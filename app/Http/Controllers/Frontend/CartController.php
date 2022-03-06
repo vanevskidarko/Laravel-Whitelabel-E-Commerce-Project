@@ -37,8 +37,8 @@ class CartController extends Controller
     }
 
     public function viewCart(){
-        $cartItems = Cart::where('user_id', Auth::id())->get();
-        return view('frontend.cart', compact('cartItems'));
+        $cartItem = Cart::where('user_id', Auth::id())->get();
+        return view('frontend.cart',  ['cartItem'=>$cartItem]);
     }
 
     public function deleteCartItems(Request $req){

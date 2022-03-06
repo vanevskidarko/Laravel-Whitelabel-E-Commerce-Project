@@ -73,13 +73,19 @@ Checkout
                                         <td>{{$item->product_qty}}</td>
                                         <td>${{$item->products->selling_price}}</td>
                                     </tr>
-                                    @php
+                                       @php
                                         $total = 0;
-                                        $total+=$item->products->selling_price*$item->product_qty;
-                                    @endphp
+                                       foreach ($cartItems as $item) {
+                                           $total = $total + $item->products->selling_price*$item->product_qty;
+                                       }
+                                       echo $total;
+                                       @endphp
                                 @endforeach
                             </tbody>
                         </table>
+                        @php
+                            echo $total
+                        @endphp
                         <h4 class="total my-1 text-center">Total:{{$total}}</h3>
                         <div id="paypal-button-container"></div>
                     </div>

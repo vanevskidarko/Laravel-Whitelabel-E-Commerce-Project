@@ -16,12 +16,15 @@
                 @foreach ($featured_products as $product )
                     <div class="item">
                         <div class="card" style="width: 18rem;">
-                            <img class="card-img-top" style="width: 100%;height: 15vw; object-fit: cover;" src="{{asset('assets/uploads/products/'.$product->image)}}" alt="Card image cap">
-                            <div class="card-body">
-                              <h4 class="card-text">{{$product->name}}</h4>
-                              <span>{{$product->selling_price}}</span>
-                            </div>
-                          </div>
+                            <a href="{{url('category/'.$product->category->name.'/'.$product->name)}}">
+                                <img class="card-img-top" style="width: 100%;height: 15vw; object-fit: cover;" src="{{asset('assets/uploads/products/'.$product->image)}}" alt="Card image cap">
+                                <div class="card-body">
+                                  <h4 class="card-text">{{$product->name}}</h4>
+                                  <span>{{$product->selling_price}}</span>
+                                </div>
+                              </div>
+                            </a>
+
                     </div>      
                 @endforeach
             </div>
@@ -39,11 +42,14 @@
                 @foreach ($trending_categories as $category )
                 <div class="item">
                     <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" style="width: 100%;height: 15vw; object-fit: cover;" src="{{asset('assets/uploads/category/'.$category->image)}}" alt="Card image cap">
-                        <div class="card-body">
-                          <h4 class="card-text">{{$category->name}}</h4>
-                          <span>{{$category->description}}</span>
-                        </div>
+                        <a href="{{url('view-category/'.$category->name)}}">
+                            <img class="card-img-top" style="width: 100%;height: 15vw; object-fit: cover;" src="{{asset('assets/uploads/category/'.$category->image)}}" alt="Card image cap">
+                            <div class="card-body">
+                              <h4 class="card-text">{{$category->name}}</h4>
+                              <span>{{$category->description}}</span>
+                            </div>
+                        </a>
+                        
                       </div>
                 </div>                   
                 @endforeach
@@ -53,7 +59,12 @@
         </div>
     </div>
 </div>
-
+<style>
+    a:hover{
+        text-decoration: none;
+        color: black;
+    }
+</style>
 @section('scripts')
 <script>
 $('.owl-carousel').owlCarousel({
