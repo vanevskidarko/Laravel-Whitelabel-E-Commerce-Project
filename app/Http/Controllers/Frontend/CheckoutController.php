@@ -29,7 +29,6 @@ class CheckoutController extends Controller
         $order->address2 = $req->input('address2');
         $order->city = $req->input('city');
         $order->country = $req->input('country');
-        $order->pincode = $req->input('pin');
         $total = 0;
         $cartItems_total = Cart::where('user_id',Auth::id())->get();
         foreach($cartItems_total as $prod){
@@ -62,7 +61,6 @@ class CheckoutController extends Controller
             $user->address2 = $req->input('address2');
             $user->city = $req->input('city');
             $user->country = $req->input('country');
-            $user->pincode = $req->input('pin');
             $user->update();
         }
 

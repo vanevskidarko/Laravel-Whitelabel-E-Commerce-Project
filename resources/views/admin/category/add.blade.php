@@ -20,6 +20,7 @@
                         <input type="text" class="form-control" name="slug">
                     </div>
                     <div class="col-md-12">
+                        <label for="description">Description</label>
                         <textarea name="description" rows="5" class="form-control"></textarea>
                     </div>
                     <div class="col-md-6">

@@ -3,7 +3,7 @@
 
 <div class="card">
     <div class="card-body">
-        <h1>CodeAcademy</h1>
+        <h1>E-Commerce</h1>
     </div>
 </div>
 

@@ -32,7 +32,7 @@
                 <div class="col-md-5">
                     <h6>{{$item->products->name}}</h6>
                 </div>
-
+                
                 <div class="col-md-3">
                     <input type="hidden" name="product_id" class="product_id" value="{{$item->product_id}}">
                     <label for="quantity">

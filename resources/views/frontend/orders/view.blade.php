@@ -31,8 +31,7 @@ My Orders
                             <label for="">Shipping Address</label>
                             <div class="border p-2">{{$orders->address1}}, {{$orders->address2}}, {{$orders->city}}, {{$orders->country}}</div>
                             
-                            <label for="">Zip Code</label>
-                            <div class="border p-2">{{$orders->pincode}}</div>
+                            
                         </div>
                         <div class="col-md-6">
                     <table class="table table-bordered table-striped">
@@ -55,7 +54,7 @@ My Orders
                             @endforeach
                         </tbody>
                     </table>  
-                    <h3>Total: {{$orders->total_price}}</h3>
+                    <h3>Total: ${{$orders->total_price}} <span class="float-right">Paid by Paypal</span> </h3>
                         </div>
                     </div>
 
